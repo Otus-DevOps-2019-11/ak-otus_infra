@@ -26,3 +26,5 @@ change in slack
 
 clear slack room
   slack:
+
+reinstall travis
