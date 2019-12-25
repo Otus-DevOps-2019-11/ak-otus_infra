@@ -23,3 +23,6 @@ notifications:
 
 change in slack
   slack: devops-team-otus:udvIx3YKtEom8dxnydjhwTqq
+
+clear slack room
+  slack:
