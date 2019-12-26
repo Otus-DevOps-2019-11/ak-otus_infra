@@ -1,15 +1,24 @@
 # ak-otus_infra
 ak-otus Infra repository
 
-ChatOps HomeWork
+Google Cloud Platform HomeWork
 
-add template PULL_REQUEST_TEMPLATE.md
-install ruby, pip
-add .pre-commit-config.yaml
-install pre-commit
-integration github into slak by run command /github subscribe Otus-DevOps-2019-11/ak-otus_infra commits:all
-download test.ry to /play-travis
-touch .travis.yml and configure for travis integration
-integration slack with travis ci
-install travisadd encryption to .travis.yml
-clear error in test.ry
+bastion_IP = 104.197.247.8
+someinternalhost_IP = 10.142.0.2
+
+connect to someinternalhost by one command line:
+ssh -i ~/.ssh/root -t -L 1521:104.197.247.8:51521 root@104.197.247.8 ssh -L 51521:10.142.0.2:1521 root@10.142.0.2
+
+aliases:
+cat  ~/.ssh/config
+Host *
+ForwardAgent yes
+
+Host bastion
+HostName 104.197.247.8
+User root
+
+Host someinternalhost
+HostName 10.142.0.2
+User root
+ProxyCommand ssh bastion nc %h %p
