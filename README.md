@@ -1,24 +1,16 @@
-# ak-otus_infra
-ak-otus Infra repository
+testapp_IP = 35.189.211.57
 
-Google Cloud Platform HomeWork
+testapp_port = 9292
 
-bastion_IP = 104.197.247.8
-someinternalhost_IP = 10.142.0.2
 
-connect to someinternalhost by one command line:
-ssh -i ~/.ssh/root -t -L 1521:104.197.247.8:51521 root@104.197.247.8 ssh -L 51521:10.142.0.2:1521 root@10.142.0.2
+gcloud compute instances create reddit-app\
+  --boot-disk-size=10GB \
+  --image-family ubuntu-1604-lts \
+  --image-project=ubuntu-os-cloud \
+  --machine-type=g1-small \
+  --tags puma-server \
+  --restart-on-failure \
+  --metadata-from-file startup-script=startup-script.sh
 
-aliases:
-cat  ~/.ssh/config
-Host *
-ForwardAgent yes
 
-Host bastion
-HostName 104.197.247.8
-User root
-
-Host someinternalhost
-HostName 10.142.0.2
-User root
-ProxyCommand ssh bastion nc %h %p
+gcloud compute firewall-rules create default-puma-server2 --allow=tcp:9292 --description="Allow incoming traffic on TCP port 9292" --direction=INGRESS --target-tags=puma-server
