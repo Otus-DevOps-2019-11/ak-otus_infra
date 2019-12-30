@@ -1,20 +1,10 @@
 {
-    "builders": [
-        {
-            "project_id": "infra-tra-la-la",
-            "source_image_family": "ubuntu-1604-lts"
-        }
-    ],
-    "provisioners": [
-        {
-            "type": "shell",
-            "script": "scripts/install_ruby.sh",
-            "execute_command": "sudo {{.Path}}"
-        },
-        {
-            "type": "shell",
-            "script": "scripts/install_mongodb.sh",
-            "execute_command": "sudo {{.Path}}"
-        }
-    ]
+    "project_id": "infra-tra-la-la",
+    "source_image_family": "ubuntu-1604-lts",
+    "image_description":"packer test",
+    "disk_type":"pd-standard",
+    "machine_type": "pd-ssd",
+    "image_family": "reddit-base",
+    "zone": "europe-west1-b",
+    "tags":"reddit-app"
 }
