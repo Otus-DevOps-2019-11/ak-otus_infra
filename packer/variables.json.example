@@ -1,0 +1,20 @@
+{
+    "builders": [
+        {
+            "project_id": "infra-tra-la-la",
+            "source_image_family": "ubuntu-1604-lts"
+        }
+    ],
+    "provisioners": [
+        {
+            "type": "shell",
+            "script": "scripts/install_ruby.sh",
+            "execute_command": "sudo {{.Path}}"
+        },
+        {
+            "type": "shell",
+            "script": "scripts/install_mongodb.sh",
+            "execute_command": "sudo {{.Path}}"
+        }
+    ]
+}

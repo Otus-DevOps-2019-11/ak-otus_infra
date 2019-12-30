@@ -1,0 +1,30 @@
+{
+    "builders": [
+        {
+            "type": "googlecompute",
+            "project_id": "infra-263114",
+            "image_name": "reddit-base-{{timestamp}}",
+            "image_family": "reddit-base",
+            "source_image_family": "ubuntu-1604-lts",
+            "zone": "europe-west1-b",
+            "ssh_username": "root",
+            "machine_type": "g1-small",
+            "disk_size": "11",
+            "disk_type": "pd-ssd",
+            "network": "my_network",
+            "tags": "reddit-app"
+        }
+    ],
+    "provisioners": [
+        {
+            "type": "shell",
+            "script": "scripts/install_ruby.sh",
+            "execute_command": "sudo {{.Path}}"
+        },
+        {
+            "type": "shell",
+            "script": "scripts/install_mongodb.sh",
+            "execute_command": "sudo {{.Path}}"
+        }
+    ]
+}
