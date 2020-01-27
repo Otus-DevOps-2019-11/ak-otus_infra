@@ -1,0 +1,5 @@
+#project = "devops-course-1"
+project         = "infra-263114"
+public_key_path = "~/.ssh/root.pub"
+disk_image      = "reddit-full"
+privat_key_path = "~/.ssh/root"
