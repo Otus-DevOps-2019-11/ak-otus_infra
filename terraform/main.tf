@@ -32,7 +32,7 @@ resource "google_compute_instance" "app" {
     user  = "root"
     agent = false
     # путь до приватного ключа
-    private_key = file("~/.ssh/")
+    private_key = file("~/.ssh/root.pri")
   }
   provisioner "file" {
     source      = "files/puma.service"
