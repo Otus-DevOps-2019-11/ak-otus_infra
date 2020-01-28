@@ -21,6 +21,10 @@ ak-otus Infra repository
 
 Создан create-reddit-vm.sh скрипт для запуска виртуальной машины из образа, создаваемого после immutable.json
 
+packer/packer build immutable.json
+config_cripts/create-reddit-vm.sh
+
+
 --- End task "Модели управления инфраструктурой Packer"
 
 
@@ -70,3 +74,16 @@ ProxyCommand ssh bastion nc %h %p
 --- End task Google Cloud Platform HomeWork
 
 
+--- Task Практика IaC с использованием Terraform
+
+terraform-1
+
+main.tf - основной конфигурационный файл с описанием инфраструктуры;
+outputs.tf - содержит "выходные" переменные;
+variables.tf - содержащит входные переменные;
+terraform.tfvars - файл, содержащий входные переменные, из которого Terraform загружает значения автоматически при каждом запуске;
+Выполнено самостоятельное задание с объявлением переменных и создан terraform.tfvars.example;
+Выполнено задание с *, добавилены ssh ключи в метаданные проекта для appuser, appuser1, appuser2;
+Добавленный через web-интерфейс ключ appuser_web удаляется после применения terraform apply
+
+--- End task Практика IaC с использованием Terraform
